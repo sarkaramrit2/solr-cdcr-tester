@@ -162,6 +162,7 @@ public class UltimateCdcrTester {
         System.exit(0);
     }
 
+    // create sentences for data to index
     private static String createSentance(int numWords) {
         //Sentence with numWords and 3-7 letters in each word
         StringBuilder sb = new StringBuilder(numWords * 2);
@@ -171,6 +172,7 @@ public class UltimateCdcrTester {
         return sb.toString();
     }
 
+    // create data for index
     private static void loadData() {
         // to index payload
         for (int i = 0; i < 5; i++) {
@@ -178,6 +180,7 @@ public class UltimateCdcrTester {
         }
     }
 
+    // helper function to all cluster
     private static boolean docsInSync(CloudSolrClient src, CloudSolrClient tar) throws Exception {
         if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).getResults().getNumFound())) {
             return true;
@@ -185,6 +188,7 @@ public class UltimateCdcrTester {
         return false;
     }
 
+    // helper function to validate sync
     private static void waitForSync(CloudSolrClient source_cli, CloudSolrClient target_cli, String payload) throws Exception {
         long start = System.nanoTime();
         QueryResponse source_resp = source_cli.query(new SolrQuery(payload));
