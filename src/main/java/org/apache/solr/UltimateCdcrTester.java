@@ -60,7 +60,7 @@ public class UltimateCdcrTester {
         ThreadLocalRandom r = ThreadLocalRandom.current();
         UpdateRequest updateRequest = null;
 
-        // to index payload
+        // create data for payload
         loadData();
 
         for (int j = 0; j < 200 * Integer.parseInt(args[2]); j++) {
