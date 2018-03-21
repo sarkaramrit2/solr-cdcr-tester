@@ -1,1 +1,1 @@
-# solr-load-test
+# solr-cdcr-tester
