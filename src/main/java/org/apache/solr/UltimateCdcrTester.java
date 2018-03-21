@@ -24,13 +24,13 @@ public class UltimateCdcrTester {
 
     private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     static String[] strings = new String[5];
-    static final String[] fieldNames = new String[]{"order_no_s", "ship_addr_s"};
+    static final String[] FIELDS = new String[]{"order_no_s", "ship_addr_s"};
     private static Random r = new Random();
     private static String C1_ZK;
     private static String C2_ZK;
     private static String col1 = "cluster1";
     private static String col2 = "cluster2";
-    private static final String all = "*:*";
+    private static final String ALL = "*:*";
 
     public static void main(String args[]) throws IOException, SolrServerException, Exception {
         if (args.length == 0) {
@@ -38,8 +38,8 @@ public class UltimateCdcrTester {
             // default indexing batch size: 1024 x 1 = 1024
             // default number of iterations: 200 x 1 = 200
         }
-        C1_ZK = args[0];
-        C2_ZK = args[1];
+        C1_ZK = args[0]; //set cluster-1 zk
+        C2_ZK = args[1]; //set cluster-2 zk
         if (args.length > 4) {
             col1 = args[4]; //setup col 1 name
             col2 = args[5]; //setup col 2 name
@@ -74,7 +74,7 @@ public class UltimateCdcrTester {
 
                 case 0:
                     // delete-by-id
-                    String fieldName = fieldNames[r.nextInt(2) % 2];
+                    String fieldName = FIELDS[r.nextInt(2) % 2];
                     String fieldValue = strings[r.nextInt(5) % 5];
                     String payload = fieldName + ":" + fieldValue;
                     QueryResponse source_resp = source_cli.query(new SolrQuery(payload));
@@ -96,7 +96,7 @@ public class UltimateCdcrTester {
                 case 1:
                     // delete-by-query
                     updateRequest = new UpdateRequest();
-                    String fieldName1 = fieldNames[r.nextInt(2) % 2];
+                    String fieldName1 = FIELDS[r.nextInt(2) % 2];
                     String fieldValue1 = strings[r.nextInt(5) % 5];
                     String payload1 = fieldName1 + ":" + fieldValue1;
                     updateRequest.deleteByQuery(payload1);
@@ -179,7 +179,7 @@ public class UltimateCdcrTester {
     }
 
     private static boolean docsInSync(CloudSolrClient src, CloudSolrClient tar) throws Exception {
-        if (src.query(new SolrQuery(all)).getResults().getNumFound() == (tar.query(new SolrQuery(all)).getResults().getNumFound())) {
+        if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).getResults().getNumFound())) {
             return true;
         }
         return false;
