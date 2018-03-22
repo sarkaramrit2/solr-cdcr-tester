@@ -8,6 +8,8 @@ import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrInputDocument;
+import org.apache.solr.common.params.CommonParams;
+import org.apache.solr.common.params.ModifiableSolrParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,9 +62,8 @@ public class UltimateCdcrTesterV2 {
         // create data for payload
         loadData();
 
-        //
+        // first level sanity check
         {
-
         }
 
         for (int j = 0; j < 200 * Integer.parseInt(args[2]); j++) {
@@ -112,15 +113,13 @@ public class UltimateCdcrTesterV2 {
                             //nested document, delete both parent and child to avoid linging docs
                             if (idToDel.contains("parent_")) {
                                 idToDel = idToDel.substring("parent_".length());
-                            }
-                            else {
+                            } else {
                                 idToDel = idToDel.substring("child_".length());
                             }
-                            updateRequest.deleteById(Arrays.asList(new String[]{"parent_" + idToDel,"child_" + idToDel}));
+                            updateRequest.deleteById(Arrays.asList(new String[]{"parent_" + idToDel, "child_" + idToDel}));
                             // update payload to verify on other cluster
                             payload = "id:" + updateRequest.getDeleteById().get(0) + "OR" + updateRequest.getDeleteById().get(1);
-                        }
-                        else { //singlular document
+                        } else { //singlular document
                             updateRequest.deleteById(idToDel);
                             // update payload to verify on other cluster
                             payload = "id:" + updateRequest.getDeleteById().get(0);
@@ -167,8 +166,7 @@ public class UltimateCdcrTesterV2 {
                             childdoc.addField("ship_addr_s", ship_addr);
                             document.addChildDocument(childdoc);
                             document.addField("id", "parent_" + id);
-                        }
-                        else {
+                        } else {
                             document.addField("id", id); // no child doc
                         }
                         docs.add(document);
@@ -211,11 +209,22 @@ public class UltimateCdcrTesterV2 {
         }
     }
 
+    // helper function for checkpoint
+    private static long checkpoint(CloudSolrClient solrClient) throws Exception {
+        ModifiableSolrParams params = new ModifiableSolrParams();
+        params.set(CommonParams.ACTION, "COLLECTIONCHECKPOINT");
+        params.set(CommonParams.QT, "/cdcr");
+        QueryResponse response = solrClient.query(params);
+        return (Long) response.getResponse().get("CHECKPOINT");
+    }
+
     // helper function to all cluster
-    private static boolean docsInSync(CloudSolrClient src, CloudSolrClient tar) throws Exception {
+    private static boolean clusterInSync(CloudSolrClient src, CloudSolrClient tar) throws Exception {
+        //if (checkpoint(src) == checkpoint(tar)) {
         if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).getResults().getNumFound())) {
             return true;
         }
+        //}
         return false;
     }
 
@@ -226,7 +235,7 @@ public class UltimateCdcrTesterV2 {
         QueryResponse target_resp = null;
         while (System.nanoTime() - start <= TimeUnit.NANOSECONDS.convert(240, TimeUnit.SECONDS)) {
             Thread.sleep(2000); // pause
-            if (!docsInSync(source_cli, target_cli)) {
+            if (!clusterInSync(source_cli, target_cli)) {
                 continue;
             }
             target_cli.commit();
