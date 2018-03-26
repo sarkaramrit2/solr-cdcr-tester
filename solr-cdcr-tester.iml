@@ -44,848 +44,694 @@ under the License.
         </library>
       </orderEntry>
      -->  
-    <output url="file://$MODULE_DIR$/target/classes"/>
-    <output-test url="file://$MODULE_DIR$/target/test-classes"/>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/httpcomponents/httpcore/4.4.1/httpcore-4.4.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+    <output url="file://$MODULE_DIR$/target/classes"/>  
+    <output-test url="file://$MODULE_DIR$/target/test-classes"/>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-test-framework/7.2.1/lucene-test-framework-7.2.1.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-codecs/7.2.1/lucene-codecs-7.2.1.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-core/7.2.1/lucene-core-7.2.1.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/com/carrotsearch/randomizedtesting/randomizedtesting-runner/2.5.3/randomizedtesting-runner-2.5.3.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/junit/junit/4.10/junit-4.10.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/jmeter/ApacheJMeter_java/2.13/ApacheJMeter_java-2.13.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/jmeter/jorphan/2.13/jorphan-2.13.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/bsf/bsf/2.4.0/bsf-2.4.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/avalon-framework/avalon-framework/4.1.4/avalon-framework-4.1.4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/beanshell/bsh/2.0b5/bsh-2.0b5.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/bouncycastle/bcmail-jdk15on/1.49/bcmail-jdk15on-1.49.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.49/bcprov-jdk15on-1.49.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.49/bcpkix-jdk15on-1.49.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/commons-jexl/commons-jexl/1.1/commons-jexl-1.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/commons/commons-jexl/2.1.1/commons-jexl-2.1.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/commons-net/commons-net/3.3/commons-net-3.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/dnsjava/dnsjava/2.1.7/dnsjava-2.1.7.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-datasource/excalibur-datasource/2.1/excalibur-datasource-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/hsqldb/hsqldb/1.8.0.1/hsqldb-1.8.0.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/avalon-framework/avalon-framework-api/4.3/avalon-framework-api-4.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/avalon-logkit/avalon-logkit/2.1/avalon-logkit-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/log4j/log4j/1.2.11/log4j-1.2.11.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/javax/servlet/servlet-api/2.3/servlet-api-2.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/geronimo-spec/geronimo-spec-javamail/1.3.1-rc3/geronimo-spec-javamail-1.3.1-rc3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/geronimo-spec/geronimo-spec-jms/1.1-rc4/geronimo-spec-jms-1.1-rc4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/avalon-framework/avalon-framework-impl/4.3/avalon-framework-impl-4.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xml-apis/xmlParserAPIs/2.0.2/xmlParserAPIs-2.0.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xerces/xercesImpl/2.11.0/xercesImpl-2.11.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xalan/xalan/2.7.2/xalan-2.7.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/jmock/jmock/1.0.1/jmock-1.0.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-instrument/excalibur-instrument-api/2.1/excalibur-instrument-api-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-pool/excalibur-pool-api/2.1/excalibur-pool-api-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-pool/excalibur-pool-impl/2.1/excalibur-pool-impl-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/concurrent/concurrent/1.3.4/concurrent-1.3.4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/junitperf/junitperf/1.8/junitperf-1.8.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-pool/excalibur-pool-instrumented/2.1/excalibur-pool-instrumented-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-component/excalibur-testcase/2.1/excalibur-testcase-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-logger/excalibur-logger/1.1/excalibur-logger-1.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-component/excalibur-component/2.1/excalibur-component-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-instrument/excalibur-instrument-mgr-api/2.1/excalibur-instrument-mgr-api-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-instrument/excalibur-instrument-mgr-impl/2.1/excalibur-instrument-mgr-impl-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/qdox/qdox/1.5/qdox-1.5.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/excalibur-instrument/excalibur-instrument/1.0/excalibur-instrument-1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/htmlparser/htmllexer/2.1/htmllexer-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/htmlparser/htmlparser/2.1/htmlparser-2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/httpcomponents/httpclient/4.4.1/httpclient-4.4.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/httpcomponents/httpmime/4.2.6/httpmime-4.2.6.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/oro/oro/2.0.8/oro-2.0.8.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/jcharts/jcharts/0.7.5/jcharts-0.7.5.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/jdom/jdom/1.1.3/jdom-1.1.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/mozilla/rhino/1.7R5/rhino-1.7R5.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/logkit/logkit/2.0/logkit-2.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/soap/soap/2.3.1/soap-2.3.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/net/sf/jtidy/jtidy/r938/jtidy-r938.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/tika/tika-core/1.7/tika-core-1.7.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/tika/tika-parsers/1.7/tika-parsers-1.7.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/gagravarr/vorbis-java-tika/0.6/vorbis-java-tika-0.6.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/edu/ucar/netcdf/4.2.20/netcdf-4.2.20.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/edu/ucar/unidataCommon/4.2.20/unidataCommon-4.2.20.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/slf4j/slf4j-api/1.7.10/slf4j-api-1.7.10.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/net/sourceforge/jmatio/jmatio/1.0/jmatio-1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/james/apache-mime4j-core/0.7.2/apache-mime4j-core-0.7.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/james/apache-mime4j-dom/0.7.2/apache-mime4j-dom-0.7.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/tukaani/xz/1.5/xz-1.5.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/pdfbox/pdfbox/1.8.8/pdfbox-1.8.8.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/pdfbox/fontbox/1.8.8/fontbox-1.8.8.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/pdfbox/jempbox/1.8.8/jempbox-1.8.8.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/bouncycastle/bcmail-jdk15/1.45/bcmail-jdk15-1.45.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/bouncycastle/bcprov-jdk15/1.45/bcprov-jdk15-1.45.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/poi/poi/3.11/poi-3.11.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/poi/poi-scratchpad/3.11/poi-scratchpad-3.11.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/poi/poi-ooxml/3.11/poi-ooxml-3.11.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/poi/poi-ooxml-schemas/3.11/poi-ooxml-schemas-3.11.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/xmlbeans/xmlbeans/2.6.0/xmlbeans-2.6.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/ow2/asm/asm-debug-all/4.1/asm-debug-all-4.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/googlecode/mp4parser/isoparser/1.0.2/isoparser-1.0.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/aspectj/aspectjrt/1.8.0/aspectjrt-1.8.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/drewnoakes/metadata-extractor/2.6.2/metadata-extractor-2.6.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/adobe/xmp/xmpcore/5.1.2/xmpcore-5.1.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/de/l3s/boilerpipe/boilerpipe/1.1.0/boilerpipe-1.1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/rome/rome/1.0/rome-1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/jdom/jdom/1.0/jdom-1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/gagravarr/vorbis-java-core/0.6/vorbis-java-core-0.6.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/uwyn/jhighlight/1.0/jhighlight-1.0.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/pff/java-libpst/0.8.1/java-libpst-0.8.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/thoughtworks/xstream/xstream/1.4.8/xstream-1.4.8.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/xalan/serializer/2.7.2/serializer-2.7.2.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/xmlgraphics/xmlgraphics-commons/1.5/xmlgraphics-commons-1.5.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/javax/mail/mail/1.5.0-b01/mail-1.5.0-b01.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/geronimo/specs/geronimo-jms_1.1_spec/1.1.1/geronimo-jms_1.1_spec-1.1.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/jsoup/jsoup/1.8.1/jsoup-1.8.1.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/jodd/jodd-core/3.6.4/jodd-core-3.6.4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/jodd/jodd-lagarto/3.6.4/jodd-lagarto-3.6.4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/jodd/jodd-log/3.6.4/jodd-log-3.6.4.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/mongodb/mongo-java-driver/2.11.3/mongo-java-driver-2.11.3.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/slf4j/slf4j-nop/1.7.10/slf4j-nop-1.7.10.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/jmeter/ApacheJMeter_core/2.13/ApacheJMeter_core-2.13.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/org/apache/jmeter/ApacheJMeter_components/2.13/ApacheJMeter_components-2.13.jar!/"/>
-        </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/apache/solr/solr-solrj/7.2.1/solr-solrj-7.2.1.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/apache/zookeeper/zookeeper/3.4.10/zookeeper-3.4.10.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/codehaus/woodstox/stax2-api/3.1.4/stax2-api-3.1.4.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/codehaus/woodstox/woodstox-core-asl/4.4.1/woodstox-core-asl-4.4.1.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/noggit/noggit/0.8/noggit-0.8.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
           <root url="jar:///Users/apple/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.7/jcl-over-slf4j-1.7.7.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
         <CLASSES>
-          <root url="jar:///Users/apple/.m2/repository/com/codahale/metrics/metrics-core/3.0.1/metrics-core-3.0.1.jar!/"/>
+          <root url="jar:///Users/apple/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar!/"/>
         </CLASSES>
-      </library>
-    </orderEntry>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/solr/solr-core/7.2.1/solr-core-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-analyzers-common/7.2.1/lucene-analyzers-common-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-analyzers-kuromoji/7.2.1/lucene-analyzers-kuromoji-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-analyzers-phonetic/7.2.1/lucene-analyzers-phonetic-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-backward-codecs/7.2.1/lucene-backward-codecs-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-classification/7.2.1/lucene-classification-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-expressions/7.2.1/lucene-expressions-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-grouping/7.2.1/lucene-grouping-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-highlighter/7.2.1/lucene-highlighter-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-join/7.2.1/lucene-join-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-memory/7.2.1/lucene-memory-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-misc/7.2.1/lucene-misc-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-queries/7.2.1/lucene-queries-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-queryparser/7.2.1/lucene-queryparser-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-sandbox/7.2.1/lucene-sandbox-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-spatial-extras/7.2.1/lucene-spatial-extras-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-spatial3d/7.2.1/lucene-spatial3d-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/lucene/lucene-suggest/7.2.1/lucene-suggest-7.2.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/carrotsearch/hppc/0.7.3/hppc-0.7.3.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.5.4/jackson-annotations-2.5.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.5.4/jackson-core-2.5.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.5.4/jackson-databind-2.5.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.5.4/jackson-dataformat-smile-2.5.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/github/ben-manes/caffeine/caffeine/2.4.0/caffeine-2.4.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/google/guava/guava/14.0.1/guava-14.0.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/google/protobuf/protobuf-java/3.1.0/protobuf-java-3.1.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/com/tdunning/t-digest/3.1/t-digest-3.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/commons-configuration/commons-configuration/1.6/commons-configuration-1.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/commons-fileupload/commons-fileupload/1.3.2/commons-fileupload-1.3.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/info/ganglia/gmetric4j/gmetric4j/1.0.7/gmetric4j-1.0.7.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/io/dropwizard/metrics/metrics-core/3.2.2/metrics-core-3.2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/io/dropwizard/metrics/metrics-ganglia/3.2.2/metrics-ganglia-3.2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/io/dropwizard/metrics/metrics-graphite/3.2.2/metrics-graphite-3.2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/io/dropwizard/metrics/metrics-jetty9/3.2.2/metrics-jetty9-3.2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/io/dropwizard/metrics/metrics-jvm/3.2.2/metrics-jvm-3.2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/joda-time/joda-time/2.2/joda-time-2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/net/hydromatic/eigenbase-properties/1.1.5/eigenbase-properties-1.1.5.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/antlr/antlr4-runtime/4.5.1-1/antlr4-runtime-4.5.1-1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/calcite/calcite-core/1.13.0/calcite-core-1.13.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/calcite/calcite-linq4j/1.13.0/calcite-linq4j-1.13.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/calcite/avatica/avatica-core/1.10.0/avatica-core-1.10.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/curator/curator-client/2.8.0/curator-client-2.8.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/curator/curator-framework/2.8.0/curator-framework-2.8.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/curator/curator-recipes/2.8.0/curator-recipes-2.8.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/hadoop/hadoop-annotations/2.7.4/hadoop-annotations-2.7.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre/../lib/tools.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/hadoop/hadoop-auth/2.7.4/hadoop-auth-2.7.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/hadoop/hadoop-common/2.7.4/hadoop-common-2.7.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/hadoop/hadoop-hdfs/2.7.4/hadoop-hdfs-2.7.4.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/htrace/htrace-core/3.2.0-incubating/htrace-core-3.2.0-incubating.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/codehaus/janino/commons-compiler/2.7.6/commons-compiler-2.7.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/codehaus/janino/janino/2.7.6/janino-2.7.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-continuation/9.3.20.v20170531/jetty-continuation-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-deploy/9.3.20.v20170531/jetty-deploy-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-http/9.3.20.v20170531/jetty-http-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-io/9.3.20.v20170531/jetty-io-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-jmx/9.3.20.v20170531/jetty-jmx-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-rewrite/9.3.20.v20170531/jetty-rewrite-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-security/9.3.20.v20170531/jetty-security-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-server/9.3.20.v20170531/jetty-server-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-servlet/9.3.20.v20170531/jetty-servlet-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-servlets/9.3.20.v20170531/jetty-servlets-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-util/9.3.20.v20170531/jetty-util-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-webapp/9.3.20.v20170531/jetty-webapp-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/eclipse/jetty/jetty-xml/9.3.20.v20170531/jetty-xml-9.3.20.v20170531.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/locationtech/spatial4j/spatial4j/0.6/spatial4j-0.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/ow2/asm/asm/5.1/asm-5.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/ow2/asm/asm-commons/5.1/asm-commons-5.1.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/restlet/jee/org.restlet/2.3.0/org.restlet-2.3.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/restlet/jee/org.restlet.ext.servlet/2.3.0/org.restlet.ext.servlet-2.3.0.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/httpcomponents/httpmime/4.5.3/httpmime-4.5.3.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/commons/commons-lang3/3.6/commons-lang3-3.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry>  
+    <orderEntry type="module-library"> 
+      <library> 
+        <CLASSES>
+          <root url="jar:///Users/apple/.m2/repository/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.jar!/"/>
+        </CLASSES>
+      </library> 
+    </orderEntry> 
   </component>  
   <component name="ModuleRootManager"/>  
   <!-- If it's a war project:

@@ -38,8 +38,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -67,57 +67,12 @@
             <version>7.2.1</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-test-framework</artifactId>
             <version>7.2.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.codahale.metrics</groupId>
-            <artifactId>metrics-core</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-
-        <!-- We need the latest httpclient and httpcore since the one used in jmeter 4.2.6 is not compatible with solrj-->
-        <!-- Remove httpclient-4.2.6  and httpcore-4.2.5 from lib/ of jmeter -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.4.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>4.4.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.jmeter</groupId>
-            <artifactId>ApacheJMeter_java</artifactId>
-            <version>2.13</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fifesoft</groupId>
-                    <artifactId>rsyntaxtextarea</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-math3</groupId>
-                    <artifactId>commons-math3</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-pool2</groupId>
-                    <artifactId>commons-pool2</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-httpclient</groupId>
-                    <artifactId>commons-httpclient</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
 
