@@ -332,7 +332,7 @@ public class UltimateCdcrTesterV2 {
     // helper fxn to write metirc line to respective files
     private static void writeToFile(Snapshot snap, String operation) throws Exception {
         String metric_dir = WORKING_DIR + "/" + "metric_report";
-        String metric_file = metric_dir + "/" + operation;
+        String metric_file = metric_dir + "/" + operation + ".csv";
         File metric_folder = new File(metric_dir);
         if (metric_folder.mkdir()) {
             // it will fail evertime except the first

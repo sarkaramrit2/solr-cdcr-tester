@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9c85e72-1301-4900-8a81-87075b5a0f82" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/org/apache/solr/UltimateCdcrTesterV2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solr-cdcr-tester.iml" afterPath="$PROJECT_DIR$/solr-cdcr-tester.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solr-cdcr-tester.iws" afterPath="$PROJECT_DIR$/solr-cdcr-tester.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java" afterPath="$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -186,8 +181,8 @@
       <file leaf-file-name="UltimateCdcrTesterV2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2145">
-              <caret line="143" column="13" lean-forward="true" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
+            <state relative-caret-position="472">
+              <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1034,8 +1029,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="143" column="13" lean-forward="true" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
+        <state relative-caret-position="472">
+          <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
