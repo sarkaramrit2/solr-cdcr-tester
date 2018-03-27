@@ -1,6 +1,9 @@
 package org.apache.solr;
 
 
+import com.codahale.metrics.Histogram;
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Snapshot;
 import org.apache.lucene.util.TestUtil;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -10,10 +13,14 @@ import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.params.CommonParams;
 import org.apache.solr.common.params.ModifiableSolrParams;
+import org.apache.solr.common.util.NamedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,7 +38,17 @@ public class UltimateCdcrTesterV2 {
     private static String col2 = "cluster2";
     private static final String ALL = "*:*";
 
+    private static final MetricRegistry metrics = new MetricRegistry();
+    private static final Histogram dbi_hist = metrics.histogram("dbis");
+    private static final Histogram dbq_hist = metrics.histogram("dbis");
+    private static final Histogram index_hist = metrics.histogram("dbis");
+
+    private static final long START_TIME_TEST = System.currentTimeMillis();
+    private static final String COMMA = ",";
+    private static final String WORKING_DIR = System.getProperty("user.dir");
+
     public static void main(String args[]) throws IOException, SolrServerException, Exception {
+
         if (args.length == 0) {
             args = new String[]{"localhost:9983", "localhost:8574", "1", "1"};
             // default indexing batch size: 1024 x 1 = 1024
@@ -64,7 +81,7 @@ public class UltimateCdcrTesterV2 {
 
         // first level sanity check
         {
-            for (int i=0; i<2; i++) { // 2 iterations, toggles
+            for (int i = 0; i < 2; i++) { // 2 iterations, toggles
                 // index one doc
                 SolrInputDocument doc1 = new SolrInputDocument();
                 String id1 = UUID.randomUUID().toString();
@@ -82,7 +99,7 @@ public class UltimateCdcrTesterV2 {
                 updateRequest.add(index(Arrays.asList(new SolrInputDocument[]{doc1, doc2})));
 
                 System.out.println("index: " + updateRequest);
-                source_cli.request(updateRequest, source_col);
+                index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
                 updateRequest.commit(source_cli, source_col);
                 waitForSync(source_cli, target_cli, ALL);
 
@@ -120,6 +137,12 @@ public class UltimateCdcrTesterV2 {
         }
 
         for (int j = 0; j < 200 * Integer.parseInt(args[2]); j++) {
+
+            // take snapshots every 100th round
+            if (j % 100 == 0) {
+                takeSnapshots();
+            }
+
             int action = r.nextInt(4) % 4;
             // 50% of probability of indexing, and 25%% of other two ops:
             // delete-by-id and delete-by-query
@@ -171,7 +194,7 @@ public class UltimateCdcrTesterV2 {
                     updateRequest.add(docs);
 
                     System.out.println("index: " + updateRequest);
-                    source_cli.request(updateRequest, source_col);
+                    index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
                     updateRequest.commit(source_cli, source_col);
 
                     docs.clear();
@@ -188,7 +211,7 @@ public class UltimateCdcrTesterV2 {
     }
 
     // DBI
-    private static void  deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col)
+    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col)
             throws Exception {
         UpdateRequest updateRequest = new UpdateRequest();
         String fieldName = FIELDS[r.nextInt(2) % 2];
@@ -212,7 +235,8 @@ public class UltimateCdcrTesterV2 {
                 // update payload to verify on other cluster
                 payload = "id:" + updateRequest.getDeleteById().get(0);
             }
-            source_cli.request(updateRequest, source_col);
+
+            dbi_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
             updateRequest.commit(source_cli, source_col);
 
             waitForSync(source_cli, target_cli, payload);
@@ -230,7 +254,7 @@ public class UltimateCdcrTesterV2 {
         updateRequest.deleteByQuery(payload1);
         System.out.println("deleteByQuery: " + updateRequest);
 
-        source_cli.request(updateRequest, source_col);
+        dbq_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
         updateRequest.commit(source_cli, source_col);
 
         waitForSync(source_cli, target_cli, payload1);
@@ -292,11 +316,44 @@ public class UltimateCdcrTesterV2 {
     // helper function to all cluster
     private static boolean clusterInSync(CloudSolrClient src, CloudSolrClient tar) throws Exception {
         //if (checkpoint(src) == checkpoint(tar)) {
-        if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).getResults().getNumFound())) {
+        if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).
+                getResults().getNumFound())) {
             return true;
         }
         //}
         return false;
+    }
+
+    // helper function to retreive qtime
+    private static Long getQTime(NamedList<NamedList> response) {
+        return Long.parseLong(response.get("responseHeader").get("QTime").toString());
+    }
+
+    // helper fxn to write metirc line to respective files
+    private static void writeToFile(Snapshot snap, String operation) throws Exception {
+        String metric_dir = WORKING_DIR + "/" + "metric_report";
+        String metric_file = metric_dir + "/" + operation;
+        File metric_folder = new File(metric_dir);
+        if (metric_folder.mkdir()) {
+            // it will fail evertime except the first
+            System.out.println("Creating metrics_report under " + WORKING_DIR);
+            PrintWriter writer = new PrintWriter(new FileWriter(metric_file));
+            writer.print("timestamp,min,max,mean,median,75th,95th,99th");
+            writer.close();
+        }
+        PrintWriter writer = new PrintWriter(new FileWriter(metric_file));
+        writer.printf(System.currentTimeMillis() - START_TIME_TEST + COMMA + snap.getMin() +
+                COMMA + snap.getMax() + COMMA + snap.getMean() + COMMA + snap.getMedian() +
+                COMMA + snap.get75thPercentile() + COMMA + snap.get95thPercentile() + COMMA +
+                snap.get99thPercentile());
+        writer.close();
+    }
+
+    // take snapshots of metrics and send to write
+    private static void takeSnapshots() throws Exception {
+        writeToFile(dbi_hist.getSnapshot(), "delete-by-id");
+        writeToFile(dbq_hist.getSnapshot(), "delete-by-query");
+        writeToFile(index_hist.getSnapshot(), "index");
     }
 
     // helper function to validate sync

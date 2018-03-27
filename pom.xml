@@ -19,7 +19,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>org.apache.solr.QuerySolr_2</mainClass>
+                            <mainClass>org.apache.solr.UltimateCdcrTesterV2</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -71,6 +71,12 @@
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-test-framework</artifactId>
             <version>7.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>3.2.2</version>
         </dependency>
 
     </dependencies>
