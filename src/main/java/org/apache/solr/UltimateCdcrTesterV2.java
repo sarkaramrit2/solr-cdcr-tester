@@ -17,10 +17,7 @@ import org.apache.solr.common.util.NamedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -346,19 +343,22 @@ public class UltimateCdcrTesterV2 {
         String metric_dir = WORKING_DIR + "/" + "metric_report";
         String metric_file = metric_dir + "/" + operation + ".csv";
         File metric_folder = new File(metric_dir);
+        BufferedWriter bw = null;
         if (metric_folder.mkdir()) {
             // it will fail evertime except the first
             System.out.println("Creating metrics_report under " + WORKING_DIR);
-            PrintWriter writer = new PrintWriter(new FileWriter(metric_file));
-            writer.print("timestamp,min,max,mean,median,75th,95th,99th");
-            writer.close();
+            bw = new BufferedWriter(new FileWriter(metric_file, true));
+            bw.write("timestamp,min,max,mean,median,75th,95th,99th");
+            bw.flush();
         }
-        PrintWriter writer = new PrintWriter(new FileWriter(metric_file));
-        writer.printf(System.currentTimeMillis() - START_TIME_TEST + COMMA + snap.getMin() +
+        bw = new BufferedWriter(new FileWriter(metric_file, true));
+        bw.newLine();
+        bw.write(System.currentTimeMillis() - START_TIME_TEST + COMMA + snap.getMin() +
                 COMMA + snap.getMax() + COMMA + snap.getMean() + COMMA + snap.getMedian() +
                 COMMA + snap.get75thPercentile() + COMMA + snap.get95thPercentile() + COMMA +
                 snap.get99thPercentile());
-        writer.close();
+        bw.flush();
+        bw.close();
     }
 
     // take snapshots of metrics and send to write
