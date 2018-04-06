@@ -98,7 +98,7 @@ public class UltimateCdcrTesterV2 {
                 updateRequest = new UpdateRequest();
                 List<SolrInputDocument> docsAsList = new ArrayList<>();
                 docsAsList.add(doc1); docsAsList.add(doc2);
-                updateRequest.add(index(docsAsList));
+                updateRequest.add(docsAsList);
 
                 System.out.println("index: " + updateRequest);
                 index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
@@ -266,7 +266,6 @@ public class UltimateCdcrTesterV2 {
     private static List<SolrInputDocument> index(List<SolrInputDocument> docs) {
         SolrInputDocument document = new SolrInputDocument();
         String id = UUID.randomUUID().toString();
-        document.addField("id", id);
         document.addField("member_id_i", r.nextInt(5) % 5);
         document.addField("subtotal_i", 1024 + r.nextInt(5) % 5);
         document.addField("quantity_l", Math.abs(r.nextLong() % 5));
