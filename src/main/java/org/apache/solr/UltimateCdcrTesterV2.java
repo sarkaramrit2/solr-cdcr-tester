@@ -101,16 +101,16 @@ public class UltimateCdcrTesterV2 {
                 docsAsList.add(doc1); docsAsList.add(doc2);
                 updateRequest.add(docsAsList);
 
-                System.out.println("index: " + updateRequest);
+                System.out.println("index: " + updateRequest.getDocumentsMap());
                 index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
                 updateRequest.commit(source_cli, source_col);
-                waitForSync(source_cli, target_cli, ALL);
+                waitForSync(source_cli, source_col, target_cli, target_col, ALL);
 
                 // delete by id
-                deleteById(source_cli, target_cli, source_col);
+                deleteById(source_cli, target_cli, source_col, target_col);
 
                 // delete by query
-                deleteByQuery(source_cli, target_cli, source_col);
+                deleteByQuery(source_cli, target_cli, source_col, target_col);
 
                 // toggle source and target
                 {
@@ -181,12 +181,12 @@ public class UltimateCdcrTesterV2 {
 
                 case 0:
                     // delete-by-id
-                    deleteById(source_cli, target_cli, source_col);
+                    deleteById(source_cli, target_cli, source_col, target_col);
                     break;
 
                 case 1:
                     // delete-by-query (delete both parent and child doc)
-                    deleteByQuery(source_cli, target_cli, source_col);
+                    deleteByQuery(source_cli, target_cli, source_col, target_col);
                     break;
 
                 default:
@@ -216,7 +216,7 @@ public class UltimateCdcrTesterV2 {
     }
 
     // DBI
-    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col)
+    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
         UpdateRequest updateRequest = new UpdateRequest();
         String fieldName = FIELDS[r.nextInt(2) % 2];
@@ -244,13 +244,13 @@ public class UltimateCdcrTesterV2 {
             dbi_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
             updateRequest.commit(source_cli, source_col);
 
-            waitForSync(source_cli, target_cli, payload);
+            waitForSync(source_cli, source_col, target_cli, target_col, payload);
         }
 
     }
 
     // DBQ
-    private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col)
+    private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
         UpdateRequest updateRequest = new UpdateRequest();
         String fieldName1 = FIELDS[r.nextInt(2) % 2];
@@ -262,7 +262,7 @@ public class UltimateCdcrTesterV2 {
         dbq_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
         updateRequest.commit(source_cli, source_col);
 
-        waitForSync(source_cli, target_cli, payload1);
+        waitForSync(source_cli, source_col, target_cli, target_col, payload1);
     }
 
     // add-update
@@ -361,9 +361,10 @@ public class UltimateCdcrTesterV2 {
     }
 
     // helper function to validate sync
-    private static void waitForSync(CloudSolrClient source_cli, CloudSolrClient target_cli, String payload) throws Exception {
+    private static void waitForSync(CloudSolrClient source_cli, String source_col, CloudSolrClient target_cli, String target_col, String payload) throws Exception {
         System.out.println("source_zk: " + source_cli.getZkHost() + " | target_zk: " + target_cli.getZkHost() + " | payload: " + payload);
         long start = System.nanoTime();
+        source_cli.setDefaultCollection(source_col);
         QueryResponse source_resp = source_cli.query(new SolrQuery(payload));
         QueryResponse target_resp = null;
         while (System.nanoTime() - start <= TimeUnit.NANOSECONDS.convert(240, TimeUnit.SECONDS)) {
@@ -371,6 +372,7 @@ public class UltimateCdcrTesterV2 {
             if (!clusterInSync(source_cli, target_cli)) {
                 continue;
             }
+            target_cli.setDefaultCollection(target_col);
             target_cli.commit();
             target_resp = target_cli.query(new SolrQuery(payload));
             if (target_resp.getResults().getNumFound() == source_resp.getResults().getNumFound()) {
