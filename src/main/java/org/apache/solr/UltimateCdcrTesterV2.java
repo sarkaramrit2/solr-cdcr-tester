@@ -263,8 +263,6 @@ public class UltimateCdcrTesterV2 {
         String fieldValue1 = strings[r.nextInt(5) % 5];
         String payload1 = fieldName1 + ":" + fieldValue1;
         updateRequest.deleteByQuery(payload1);
-        System.out.println("deleteByQuery: " + updateRequest);
-
         dbq_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
         updateRequest.commit(source_cli, source_col);
 
