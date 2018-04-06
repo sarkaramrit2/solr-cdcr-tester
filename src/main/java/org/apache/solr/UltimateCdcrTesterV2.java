@@ -344,7 +344,7 @@ public class UltimateCdcrTesterV2 {
         String metric_file = metric_dir + "/" + operation + ".csv";
         File metric_folder = new File(metric_dir);
         BufferedWriter bw = null;
-        if (metric_folder.mkdir()) {
+        if (metric_folder.mkdir() || !new File(metric_file).exists()) {
             // it will fail evertime except the first
             System.out.println("Creating metrics_report under " + WORKING_DIR);
             bw = new BufferedWriter(new FileWriter(metric_file, true));
