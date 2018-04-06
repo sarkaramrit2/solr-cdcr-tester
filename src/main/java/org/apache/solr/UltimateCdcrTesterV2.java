@@ -218,6 +218,8 @@ public class UltimateCdcrTesterV2 {
     // DBI
     private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
+        source_cli.setDefaultCollection(source_col);
+        target_cli.setDefaultCollection(target_col);
         UpdateRequest updateRequest = new UpdateRequest();
         String fieldName = FIELDS[r.nextInt(2) % 2];
         String fieldValue = strings[r.nextInt(5) % 5];
@@ -252,6 +254,8 @@ public class UltimateCdcrTesterV2 {
     // DBQ
     private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
+        source_cli.setDefaultCollection(source_col);
+        target_cli.setDefaultCollection(target_col);
         UpdateRequest updateRequest = new UpdateRequest();
         String fieldName1 = FIELDS[r.nextInt(2) % 2];
         String fieldValue1 = strings[r.nextInt(5) % 5];

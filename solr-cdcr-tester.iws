@@ -181,8 +181,8 @@
       <file leaf-file-name="UltimateCdcrTesterV2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="335" column="41" lean-forward="true" selection-start-line="335" selection-start-column="41" selection-end-line="335" selection-end-column="41" />
+            <state relative-caret-position="3855">
+              <caret line="257" column="52" lean-forward="false" selection-start-line="257" selection-start-column="52" selection-end-line="257" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -611,7 +611,16 @@
     <webview flattenPackages="false" showMembers="false" autoscrollToSource="false" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java</url>
+          <line>226</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1005,8 +1014,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="335" column="41" lean-forward="true" selection-start-line="335" selection-start-column="41" selection-end-line="335" selection-end-column="41" />
+        <state relative-caret-position="3855">
+          <caret line="257" column="52" lean-forward="false" selection-start-line="257" selection-start-column="52" selection-end-line="257" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
