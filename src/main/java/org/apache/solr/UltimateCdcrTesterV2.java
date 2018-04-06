@@ -322,6 +322,8 @@ public class UltimateCdcrTesterV2 {
         //if (checkpoint(src) == checkpoint(tar)) {
         src.setDefaultCollection(source_col);
         tar.setDefaultCollection(target_col);
+        src.commit();
+        src.commit();
         if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).
                 getResults().getNumFound())) {
             return true;
