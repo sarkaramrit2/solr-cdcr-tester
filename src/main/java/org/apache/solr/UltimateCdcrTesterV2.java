@@ -37,8 +37,8 @@ public class UltimateCdcrTesterV2 {
 
     private static final MetricRegistry metrics = new MetricRegistry();
     private static final Histogram dbi_hist = metrics.histogram("dbis");
-    private static final Histogram dbq_hist = metrics.histogram("dbis");
-    private static final Histogram index_hist = metrics.histogram("dbis");
+    private static final Histogram dbq_hist = metrics.histogram("dbqs");
+    private static final Histogram index_hist = metrics.histogram("indexes");
 
     private static final long START_TIME_TEST = System.currentTimeMillis();
     private static final String COMMA = ",";

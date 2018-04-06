@@ -181,8 +181,8 @@
       <file leaf-file-name="UltimateCdcrTesterV2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="347" column="53" lean-forward="true" selection-start-line="347" selection-start-column="53" selection-end-line="347" selection-end-column="53" />
+            <state relative-caret-position="92">
+              <caret line="341" column="67" lean-forward="false" selection-start-line="341" selection-start-column="58" selection-end-line="341" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1014,8 +1014,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="347" column="53" lean-forward="true" selection-start-line="347" selection-start-column="53" selection-end-line="347" selection-end-column="53" />
+        <state relative-caret-position="92">
+          <caret line="341" column="67" lean-forward="false" selection-start-line="341" selection-start-column="58" selection-end-line="341" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
