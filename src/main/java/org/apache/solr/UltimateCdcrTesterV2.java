@@ -96,7 +96,9 @@ public class UltimateCdcrTesterV2 {
                 doc2.addField(FIELDS[1], strings[r.nextInt(5) % 5]);
 
                 updateRequest = new UpdateRequest();
-                updateRequest.add(index(Arrays.asList(new SolrInputDocument[]{doc1, doc2})));
+                List<SolrInputDocument> docsAsList = new ArrayList<>();
+                docsAsList.add(doc1); docsAsList.add(doc2);
+                updateRequest.add(index(docsAsList));
 
                 System.out.println("index: " + updateRequest);
                 index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
