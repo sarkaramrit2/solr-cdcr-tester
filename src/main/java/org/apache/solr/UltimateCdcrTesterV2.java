@@ -61,13 +61,14 @@ public class UltimateCdcrTesterV2 {
             col2 = args[5]; //setup col 2 name
         }
 
+        String source_col = col1;
+        String target_col = col2;
+
         String source_zkHost = C1_ZK; //initial_source
         String target_zkHost = C2_ZK; //initial_target
         CloudSolrClient source_cli = new CloudSolrClient.Builder().withZkHost(source_zkHost).build();
-        String source_col = col1;
         source_cli.setDefaultCollection(source_col);
         CloudSolrClient target_cli = new CloudSolrClient.Builder().withZkHost(target_zkHost).build();
-        String target_col = col2;
         source_cli.setDefaultCollection(target_col);
 
         long curr_time = System.currentTimeMillis();
@@ -114,7 +115,9 @@ public class UltimateCdcrTesterV2 {
                 // toggle source and target
                 {
                     source_cli.close();
+                    source_cli = null;
                     target_cli.close();
+                    target_cli = null;
                     if (source_zkHost.equals(C1_ZK)) {
                         // make C2_ZK primary
                         source_zkHost = C2_ZK;
