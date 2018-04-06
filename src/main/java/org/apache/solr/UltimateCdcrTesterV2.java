@@ -359,6 +359,7 @@ public class UltimateCdcrTesterV2 {
 
     // helper function to validate sync
     private static void waitForSync(CloudSolrClient source_cli, CloudSolrClient target_cli, String payload) throws Exception {
+        System.out.println("source_zk: " + source_cli.getZkHost() + " | target_zk: " + target_cli.getZkHost() + " | payload: " + payload);
         long start = System.nanoTime();
         QueryResponse source_resp = source_cli.query(new SolrQuery(payload));
         QueryResponse target_resp = null;
