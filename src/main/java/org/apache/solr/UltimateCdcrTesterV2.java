@@ -323,7 +323,7 @@ public class UltimateCdcrTesterV2 {
         src.setDefaultCollection(source_col);
         tar.setDefaultCollection(target_col);
         src.commit();
-        src.commit();
+        tar.commit();
         if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).
                 getResults().getNumFound())) {
             return true;
