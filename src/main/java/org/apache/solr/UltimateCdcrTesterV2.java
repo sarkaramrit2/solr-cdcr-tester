@@ -318,8 +318,10 @@ public class UltimateCdcrTesterV2 {
     }
 
     // helper function to all cluster
-    private static boolean clusterInSync(CloudSolrClient src, CloudSolrClient tar) throws Exception {
+    private static boolean clusterInSync(CloudSolrClient src, CloudSolrClient tar, String source_col, String target_col) throws Exception {
         //if (checkpoint(src) == checkpoint(tar)) {
+        src.setDefaultCollection(source_col);
+        tar.setDefaultCollection(target_col);
         if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).
                 getResults().getNumFound())) {
             return true;
@@ -369,7 +371,7 @@ public class UltimateCdcrTesterV2 {
         QueryResponse target_resp = null;
         while (System.nanoTime() - start <= TimeUnit.NANOSECONDS.convert(240, TimeUnit.SECONDS)) {
             Thread.sleep(2000); // pause
-            if (!clusterInSync(source_cli, target_cli)) {
+            if (!clusterInSync(source_cli, target_cli, source_col, target_col)) {
                 continue;
             }
             target_cli.setDefaultCollection(target_col);
