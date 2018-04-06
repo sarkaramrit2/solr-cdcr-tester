@@ -218,6 +218,7 @@ public class UltimateCdcrTesterV2 {
     // DBI
     private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
+        System.out.println("deleteById to " + source_col);
         source_cli.setDefaultCollection(source_col);
         target_cli.setDefaultCollection(target_col);
         UpdateRequest updateRequest = new UpdateRequest();
@@ -254,6 +255,7 @@ public class UltimateCdcrTesterV2 {
     // DBQ
     private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
+        System.out.println("deleteByQuery to " + source_col);
         source_cli.setDefaultCollection(source_col);
         target_cli.setDefaultCollection(target_col);
         UpdateRequest updateRequest = new UpdateRequest();
