@@ -34,8 +34,8 @@ public class UltimateCdcrTesterV2 {
     private static Random r = new Random();
     private static String C1_ZK;
     private static String C2_ZK;
-    private static String col1 = "cluster1";
-    private static String col2 = "cluster2";
+    private static String col1 = "west";
+    private static String col2 = "east";
     private static final String ALL = "*:*";
 
     private static final MetricRegistry metrics = new MetricRegistry();
