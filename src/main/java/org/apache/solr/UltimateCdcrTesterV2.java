@@ -141,7 +141,7 @@ public class UltimateCdcrTesterV2 {
         for (int j = 0; j < 200 * Integer.parseInt(args[2]); j++) {
 
             // take snapshots every 100th round
-            if (j % 100 == 0) {
+            if (j % 5 == 0) {
                 takeSnapshots();
             }
 
