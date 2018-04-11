@@ -10,6 +10,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrException;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.params.CommonParams;
 import org.apache.solr.common.params.ModifiableSolrParams;
@@ -17,7 +18,10 @@ import org.apache.solr.common.util.NamedList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -95,24 +99,23 @@ public class UltimateCdcrTesterV2 {
 
                 updateRequest = new UpdateRequest();
                 List<SolrInputDocument> docsAsList = new ArrayList<>();
-                docsAsList.add(doc1); docsAsList.add(doc2);
+                docsAsList.add(doc1);
+                docsAsList.add(doc2);
                 updateRequest.add(docsAsList);
 
                 System.out.println("docsToIndex: " + updateRequest.getDocumentsMap());
                 int retries = 0;
                 NamedList resp = null;
                 try {
-                    retries++ ;
-                    resp = index(updateRequest, source_col, source_cli);
-                }
-                catch (Exception e) {
+                    retries++;
+                    resp = index(updateRequest, source_col, source_cli, 0);
+                } catch (SolrException e) {
                     Thread.sleep(4000);
                     if (retries == 10) {
                         throw new AssertionError("Indexing doesn't happen to source_col: " + source_col);
-                    }
-                    else {
+                    } else {
                         retries++;
-                        resp = index(updateRequest, source_col, source_cli);
+                        resp = index(updateRequest, source_col, source_cli, 0);
                     }
                 }
                 index_hist.update(getQTime((resp)));
@@ -120,10 +123,10 @@ public class UltimateCdcrTesterV2 {
                 waitForSync(source_cli, source_col, target_cli, target_col, ALL);
 
                 // delete by id
-                deleteById(source_cli, target_cli, source_col, target_col);
+                deleteById(source_cli, target_cli, source_col, target_col, 0);
 
                 // delete by query
-                deleteByQuery(source_cli, target_cli, source_col, target_col);
+                deleteByQuery(source_cli, target_cli, source_col, target_col, 0);
 
                 // toggle source and target
                 {
@@ -194,12 +197,12 @@ public class UltimateCdcrTesterV2 {
 
                 case 0:
                     // delete-by-id
-                    deleteById(source_cli, target_cli, source_col, target_col);
+                    deleteById(source_cli, target_cli, source_col, target_col, 0);
                     break;
 
                 case 1:
                     // delete-by-query (delete both parent and child doc)
-                    deleteByQuery(source_cli, target_cli, source_col, target_col);
+                    deleteByQuery(source_cli, target_cli, source_col, target_col, 0);
                     break;
 
                 default:
@@ -212,22 +215,9 @@ public class UltimateCdcrTesterV2 {
                     updateRequest.add(docs);
 
                     System.out.println("docsToIndex: " + updateRequest);
-                    int retries = 0;
-                    NamedList resp = null;
-                    try {
-                        retries++ ;
-                        resp = index(updateRequest, source_col, source_cli);
-                    }
-                    catch (Exception e) {
-                        Thread.sleep(4000);
-                        if (retries == 10) {
-                            throw new AssertionError("Indexing doesn't happen to source_col: " + source_col);
-                        }
-                        else {
-                            retries++;
-                            resp = index(updateRequest, source_col, source_cli);
-                        }
-                    }
+
+                    NamedList resp = index(updateRequest, source_col, source_cli, 0);
+
                     index_hist.update(getQTime((resp)));
                     updateRequest.commit(source_cli, source_col);
 
@@ -245,7 +235,7 @@ public class UltimateCdcrTesterV2 {
     }
 
     // DBI
-    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
+    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col, int retries)
             throws Exception {
         System.out.println("deleteById to " + source_col);
         source_cli.setDefaultCollection(source_col);
@@ -272,20 +262,17 @@ public class UltimateCdcrTesterV2 {
                 // update payload to verify on other cluster
                 payload = "id:" + updateRequest.getDeleteById().get(0);
             }
-            int retries = 0;
             NamedList resp = null;
             try {
-                retries++ ;
+                retries++;
                 resp = source_cli.request(updateRequest, source_col);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Thread.sleep(4000);
                 if (retries == 10) {
                     throw new AssertionError("DeleteById doesn't happen to source_col: " + source_col);
-                }
-                else {
+                } else {
                     retries++;
-                    resp = source_cli.request(updateRequest, source_col);
+                    deleteById(source_cli, target_cli, source_col, target_col, retries);
                 }
             }
             dbi_hist.update(getQTime((resp)));
@@ -297,7 +284,7 @@ public class UltimateCdcrTesterV2 {
     }
 
     // DBQ
-    private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
+    private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col, int retries)
             throws Exception {
         System.out.println("deleteByQuery to " + source_col);
         source_cli.setDefaultCollection(source_col);
@@ -307,20 +294,17 @@ public class UltimateCdcrTesterV2 {
         String fieldValue1 = strings[r.nextInt(5) % 5];
         String payload1 = fieldName1 + ":" + fieldValue1;
         updateRequest.deleteByQuery(payload1);
-        int retries = 0;
         NamedList resp = null;
         try {
-            retries++ ;
+            retries++;
             resp = source_cli.request(updateRequest, source_col);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Thread.sleep(4000);
             if (retries == 10) {
                 throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
-            }
-            else {
+            } else {
                 retries++;
-                resp = source_cli.request(updateRequest, source_col);
+                deleteByQuery(source_cli, target_cli, source_col, target_col, retries);
             }
         }
         dbq_hist.update(getQTime((resp)));
@@ -329,9 +313,21 @@ public class UltimateCdcrTesterV2 {
         waitForSync(source_cli, source_col, target_cli, target_col, payload1);
     }
 
-    private static NamedList index(UpdateRequest updateRequest, String source_col, CloudSolrClient source_cli)
-            throws Exception{
-        return source_cli.request(updateRequest, source_col);
+    private static NamedList index(UpdateRequest updateRequest, String source_col, CloudSolrClient source_cli, int retries)
+            throws Exception {
+        NamedList resp = null;
+        try {
+            resp = source_cli.request(updateRequest, source_col);
+        } catch (Exception e) {
+            Thread.sleep(4000);
+            if (retries == 10) {
+                throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
+            } else {
+                retries++;
+                index(updateRequest, source_col, source_cli, retries);
+            }
+        }
+        return resp;
     }
 
     // add-update
