@@ -99,7 +99,23 @@ public class UltimateCdcrTesterV2 {
                 updateRequest.add(docsAsList);
 
                 System.out.println("docsToIndex: " + updateRequest.getDocumentsMap());
-                index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
+                int retries = 0;
+                NamedList resp = null;
+                try {
+                    retries++ ;
+                    resp = index(updateRequest, source_col, source_cli);
+                }
+                catch (Exception e) {
+                    Thread.sleep(4000);
+                    if (retries == 10) {
+                        throw new AssertionError("Indexing doesn't happen to source_col: " + source_col);
+                    }
+                    else {
+                        retries++;
+                        resp = index(updateRequest, source_col, source_cli);
+                    }
+                }
+                index_hist.update(getQTime((resp)));
                 updateRequest.commit(source_cli, source_col);
                 waitForSync(source_cli, source_col, target_cli, target_col, ALL);
 
