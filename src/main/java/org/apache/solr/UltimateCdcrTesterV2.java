@@ -112,13 +112,13 @@ public class UltimateCdcrTesterV2 {
                     index_hist.update(getQTime((resp)));
                 }
                 updateRequest.commit(source_cli, source_col);
-                waitForSync(source_cli, source_col, target_cli, target_col, ALL);
+                waitForSync(source_cli, source_col, target_cli, target_col, ALL, 0);
 
                 // delete by id
-                deleteById(source_cli, target_cli, source_col, target_col, 0);
+                deleteById(source_cli, target_cli, source_col, target_col);
 
                 // delete by query
-                deleteByQuery(source_cli, target_cli, source_col, target_col, 0);
+                deleteByQuery(source_cli, target_cli, source_col, target_col);
 
                 // toggle source and target
                 {
@@ -189,12 +189,12 @@ public class UltimateCdcrTesterV2 {
 
                 case 0:
                     // delete-by-id
-                    deleteById(source_cli, target_cli, source_col, target_col, 0);
+                    deleteById(source_cli, target_cli, source_col, target_col);
                     break;
 
                 case 1:
                     // delete-by-query (delete both parent and child doc)
-                    deleteByQuery(source_cli, target_cli, source_col, target_col, 0);
+                    deleteByQuery(source_cli, target_cli, source_col, target_col);
                     break;
 
                 default:
@@ -229,7 +229,7 @@ public class UltimateCdcrTesterV2 {
     }
 
     // DBI
-    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col, int retries)
+    private static void deleteById(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
         System.out.println("deleteById to " + source_col);
         source_cli.setDefaultCollection(source_col);
@@ -238,7 +238,22 @@ public class UltimateCdcrTesterV2 {
         String fieldName = FIELDS[r.nextInt(2) % 2];
         String fieldValue = strings[r.nextInt(5) % 5];
         String payload = fieldName + ":" + fieldValue;
-        QueryResponse source_resp = source_cli.query(new SolrQuery(payload));
+        QueryResponse source_resp = null;
+        try {
+            source_resp = source_cli.query(new SolrQuery(payload));
+        } catch (Exception e) {
+            for (int i=0; i < RETRIES; i++) {
+                Thread.sleep(4000);
+                try {
+                    source_resp = source_cli.query(new SolrQuery(payload));
+                    break;
+                }
+                catch (Exception exp) {
+                    continue;
+                }
+            }
+        }
+
         if (source_resp.getResults().getNumFound() > 0) {
             String idToDel = source_resp.getResults().get(0).get("id").toString();
             if (idToDel.contains("parent_") || idToDel.contains("child_")) {
@@ -258,15 +273,21 @@ public class UltimateCdcrTesterV2 {
             }
             NamedList resp = null;
             try {
-                retries++;
                 resp = source_cli.request(updateRequest, source_col);
             } catch (Exception e) {
-                Thread.sleep(4000);
-                if (retries == RETRIES) {
-                    throw new AssertionError("DeleteById doesn't happen to source_col: " + source_col);
-                } else {
-                    retries++;
-                    deleteById(source_cli, target_cli, source_col, target_col, retries);
+                int i=0;
+                for (;i < RETRIES; i++) {
+                    Thread.sleep(4000);
+                    try {
+                        resp = source_cli.request(updateRequest, source_col);
+                        break;
+                    }
+                    catch (Exception exp) {
+                        continue;
+                    }
+                }
+                if (i == RETRIES) {
+                    throw new AssertionError("deleteById failed for source_col: " + source_col);
                 }
             }
             if (resp != null) {
@@ -274,13 +295,13 @@ public class UltimateCdcrTesterV2 {
             }
             updateRequest.commit(source_cli, source_col);
 
-            waitForSync(source_cli, source_col, target_cli, target_col, payload);
+            waitForSync(source_cli, source_col, target_cli, target_col, payload, 0);
         }
 
     }
 
     // DBQ
-    private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col, int retries)
+    private static void deleteByQuery(CloudSolrClient source_cli, CloudSolrClient target_cli, String source_col, String target_col)
             throws Exception {
         System.out.println("deleteByQuery to " + source_col);
         source_cli.setDefaultCollection(source_col);
@@ -292,15 +313,21 @@ public class UltimateCdcrTesterV2 {
         updateRequest.deleteByQuery(payload1);
         NamedList resp = null;
         try {
-            retries++;
             resp = source_cli.request(updateRequest, source_col);
         } catch (Exception e) {
-            Thread.sleep(4000);
-            if (retries == RETRIES) {
-                throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
-            } else {
-                retries++;
-                deleteByQuery(source_cli, target_cli, source_col, target_col, retries);
+            int i=0;
+            for (; i < RETRIES; i++) {
+                Thread.sleep(4000);
+                try {
+                    resp = source_cli.request(updateRequest, source_col);
+                    break;
+                }
+                catch (Exception exp) {
+                    continue;
+                }
+            }
+            if (i == RETRIES) {
+                throw new AssertionError("deleteByQuery failed for source_col: " + source_col);
             }
         }
         if (resp != null) {
@@ -308,7 +335,7 @@ public class UltimateCdcrTesterV2 {
         }
         updateRequest.commit(source_cli, source_col);
 
-        waitForSync(source_cli, source_col, target_cli, target_col, payload1);
+        waitForSync(source_cli, source_col, target_cli, target_col, payload1, 0);
     }
 
     private static NamedList index(UpdateRequest updateRequest, String source_col, CloudSolrClient source_cli, int retries)
@@ -322,7 +349,7 @@ public class UltimateCdcrTesterV2 {
                 throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
             } else {
                 retries++;
-                index(updateRequest, source_col, source_cli, retries);
+                resp = index(updateRequest, source_col, source_cli, retries);
             }
         }
         return resp;
@@ -381,15 +408,27 @@ public class UltimateCdcrTesterV2 {
     }
 
     // helper function to all cluster
-    private static boolean clusterInSync(CloudSolrClient src, CloudSolrClient tar, String source_col, String target_col) throws Exception {
+    private static boolean clusterInSync(CloudSolrClient src, CloudSolrClient tar, String source_col, String target_col, int retries) throws Exception {
         //if (checkpoint(src) == checkpoint(tar)) {
         src.setDefaultCollection(source_col);
         tar.setDefaultCollection(target_col);
         src.commit();
         tar.commit();
-        if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).
-                getResults().getNumFound())) {
-            return true;
+        try {
+            if (src.query(new SolrQuery(ALL)).getResults().getNumFound() == (tar.query(new SolrQuery(ALL)).
+                    getResults().getNumFound())) {
+                return true;
+            }
+        }
+        catch (Exception e) {
+            Thread.sleep(4000);
+            if (retries == RETRIES) {
+                throw new AssertionError("clusterInSync doesn't happen");
+            }
+            else {
+                retries++;
+                return clusterInSync(src, tar, source_col, target_col, retries);
+            }
         }
         //}
         return false;
@@ -431,20 +470,52 @@ public class UltimateCdcrTesterV2 {
     }
 
     // helper function to validate sync
-    private static void waitForSync(CloudSolrClient source_cli, String source_col, CloudSolrClient target_cli, String target_col, String payload) throws Exception {
+    private static void waitForSync(CloudSolrClient source_cli, String source_col, CloudSolrClient target_cli, String target_col, String payload, int retries) throws Exception {
         System.out.println("source_zk: " + source_cli.getZkHost() + " | target_zk: " + target_cli.getZkHost() + " | payload: " + payload);
         long start = System.nanoTime();
         source_cli.setDefaultCollection(source_col);
-        QueryResponse source_resp = source_cli.query(new SolrQuery(payload));
+        QueryResponse source_resp = null;
+        try {
+            source_resp = source_cli.query(new SolrQuery(payload));
+        }
+        catch (Exception e) {
+            for (int i=0; i < RETRIES; i++) {
+                try {
+                    source_resp = source_cli.query(new SolrQuery(payload));
+                    break;
+                }
+                catch (Exception exp) {
+                    continue;
+                }
+            }
+        }
         QueryResponse target_resp = null;
         while (System.nanoTime() - start <= TimeUnit.NANOSECONDS.convert(240, TimeUnit.SECONDS)) {
             Thread.sleep(2000); // pause
-            if (!clusterInSync(source_cli, target_cli, source_col, target_col)) {
+            if (!clusterInSync(source_cli, target_cli, source_col, target_col, 0)) {
                 continue;
             }
             target_cli.setDefaultCollection(target_col);
             target_cli.commit();
-            target_resp = target_cli.query(new SolrQuery(payload));
+            try {
+                target_resp = target_cli.query(new SolrQuery(payload));
+            }
+            catch (Exception e) {
+                int i=0;
+                for (; i < RETRIES; i++) {
+                    Thread.sleep(4000);
+                    try {
+                        target_resp = target_cli.query(new SolrQuery(payload));
+                        break;
+                    }
+                    catch (Exception exp) {
+                        continue;
+                    }
+                }
+                if (i == RETRIES) {
+                    throw new AssertionError("waitForSync failed");
+                }
+            }
             if (target_resp.getResults().getNumFound() == source_resp.getResults().getNumFound()) {
                 break;
             }
