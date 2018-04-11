@@ -111,7 +111,25 @@ public class UltimateCdcrTesterV2 {
                 if (resp != null) {
                     index_hist.update(getQTime((resp)));
                 }
-                updateRequest.commit(source_cli, source_col);
+                try {
+                    updateRequest.commit(source_cli, source_col);
+                }
+                catch (Exception e) {
+                    int j=0;
+                    for (; j < RETRIES; j++) {
+                        Thread.sleep(4000);
+                        try {
+                            updateRequest.commit(source_cli, source_col);
+                            break;
+                        }
+                        catch (Exception exp) {
+                            continue;
+                        }
+                    }
+                    if (j == RETRIES) {
+                        throw new AssertionError("waitForSync failed");
+                    }
+                }
                 waitForSync(source_cli, source_col, target_cli, target_col, ALL, 0);
 
                 // delete by id
@@ -213,7 +231,20 @@ public class UltimateCdcrTesterV2 {
                     if (resp != null) {
                         index_hist.update(getQTime((resp)));
                     }
-                    updateRequest.commit(source_cli, source_col);
+                    try {
+                        updateRequest.commit(source_cli, source_col);
+                    } catch (Exception e) {
+                        for (int i=0; i < RETRIES; i++) {
+                            Thread.sleep(4000);
+                            try {
+                                updateRequest.commit(source_cli, source_col);
+                                break;
+                            }
+                            catch (Exception exp) {
+                                continue;
+                            }
+                        }
+                    }
 
                     docs.clear();
                     break;
@@ -293,7 +324,24 @@ public class UltimateCdcrTesterV2 {
             if (resp != null) {
                 dbi_hist.update(getQTime((resp)));
             }
-            updateRequest.commit(source_cli, source_col);
+            try {
+                updateRequest.commit(source_cli, source_col);
+            } catch (Exception e) {
+                int i=0;
+                for (;i < RETRIES; i++) {
+                    Thread.sleep(4000);
+                    try {
+                        updateRequest.commit(source_cli, source_col);
+                        break;
+                    }
+                    catch (Exception exp) {
+                        continue;
+                    }
+                }
+                if (i == RETRIES) {
+                    throw new AssertionError("commit failed for source_col: " + source_col);
+                }
+            }
 
             waitForSync(source_cli, source_col, target_cli, target_col, payload, 0);
         }
@@ -333,7 +381,24 @@ public class UltimateCdcrTesterV2 {
         if (resp != null) {
             dbq_hist.update(getQTime((resp)));
         }
-        updateRequest.commit(source_cli, source_col);
+        try {
+            updateRequest.commit(source_cli, source_col);
+        } catch (Exception e) {
+            int i=0;
+            for (; i < RETRIES; i++) {
+                Thread.sleep(4000);
+                try {
+                    updateRequest.commit(source_cli, source_col);
+                    break;
+                }
+                catch (Exception exp) {
+                    continue;
+                }
+            }
+            if (i == RETRIES) {
+                throw new AssertionError("commit failed for source_col: " + source_col);
+            }
+        }
 
         waitForSync(source_cli, source_col, target_cli, target_col, payload1, 0);
     }
@@ -496,8 +561,8 @@ public class UltimateCdcrTesterV2 {
                 continue;
             }
             target_cli.setDefaultCollection(target_col);
-            target_cli.commit();
             try {
+                target_cli.commit();
                 target_resp = target_cli.query(new SolrQuery(payload));
             }
             catch (Exception e) {

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9c85e72-1301-4900-8a81-87075b5a0f82" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solr-cdcr-tester.iws" afterPath="$PROJECT_DIR$/solr-cdcr-tester.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java" afterPath="$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -182,8 +181,8 @@
       <file leaf-file-name="UltimateCdcrTesterV2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4484">
-              <caret line="199" column="24" lean-forward="true" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="24" />
+            <state relative-caret-position="7125">
+              <caret line="475" column="27" lean-forward="false" selection-start-line="475" selection-start-column="27" selection-end-line="475" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -626,7 +625,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java</url>
-          <line>240</line>
+          <line>271</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -985,8 +984,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4484">
-          <caret line="199" column="24" lean-forward="true" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="24" />
+        <state relative-caret-position="7125">
+          <caret line="475" column="27" lean-forward="false" selection-start-line="475" selection-start-column="27" selection-end-line="475" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
