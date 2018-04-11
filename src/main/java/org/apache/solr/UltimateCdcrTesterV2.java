@@ -10,7 +10,6 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.request.UpdateRequest;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.common.SolrException;
 import org.apache.solr.common.SolrInputDocument;
 import org.apache.solr.common.params.CommonParams;
 import org.apache.solr.common.params.ModifiableSolrParams;
@@ -109,7 +108,9 @@ public class UltimateCdcrTesterV2 {
 
                 NamedList resp = index(updateRequest, source_col, source_cli, 0);
 
-                index_hist.update(getQTime((resp)));
+                if (resp != null) {
+                    index_hist.update(getQTime((resp)));
+                }
                 updateRequest.commit(source_cli, source_col);
                 waitForSync(source_cli, source_col, target_cli, target_col, ALL);
 
@@ -209,7 +210,9 @@ public class UltimateCdcrTesterV2 {
 
                     NamedList resp = index(updateRequest, source_col, source_cli, 0);
 
-                    index_hist.update(getQTime((resp)));
+                    if (resp != null) {
+                        index_hist.update(getQTime((resp)));
+                    }
                     updateRequest.commit(source_cli, source_col);
 
                     docs.clear();
@@ -266,7 +269,9 @@ public class UltimateCdcrTesterV2 {
                     deleteById(source_cli, target_cli, source_col, target_col, retries);
                 }
             }
-            dbi_hist.update(getQTime((resp)));
+            if (resp != null) {
+                dbi_hist.update(getQTime((resp)));
+            }
             updateRequest.commit(source_cli, source_col);
 
             waitForSync(source_cli, source_col, target_cli, target_col, payload);
@@ -298,7 +303,9 @@ public class UltimateCdcrTesterV2 {
                 deleteByQuery(source_cli, target_cli, source_col, target_col, retries);
             }
         }
-        dbq_hist.update(getQTime((resp)));
+        if (resp != null) {
+            dbq_hist.update(getQTime((resp)));
+        }
         updateRequest.commit(source_cli, source_col);
 
         waitForSync(source_cli, source_col, target_cli, target_col, payload1);
