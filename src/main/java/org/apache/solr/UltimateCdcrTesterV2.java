@@ -80,7 +80,7 @@ public class UltimateCdcrTesterV2 {
         // first level sanity check
         {
             for (int i = 0; i < 2; i++) { // 2 iterations, toggles
-                // index one doc
+                // docsToIndex one doc
                 SolrInputDocument doc1 = new SolrInputDocument();
                 String id1 = UUID.randomUUID().toString();
                 doc1.addField("id", id1);
@@ -98,7 +98,7 @@ public class UltimateCdcrTesterV2 {
                 docsAsList.add(doc1); docsAsList.add(doc2);
                 updateRequest.add(docsAsList);
 
-                System.out.println("index: " + updateRequest.getDocumentsMap());
+                System.out.println("docsToIndex: " + updateRequest.getDocumentsMap());
                 index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
                 updateRequest.commit(source_cli, source_col);
                 waitForSync(source_cli, source_col, target_cli, target_col, ALL);
@@ -187,16 +187,32 @@ public class UltimateCdcrTesterV2 {
                     break;
 
                 default:
-                    // index
+                    // docsToIndex
                     List<SolrInputDocument> docs = new ArrayList<>();
                     for (int i = 0; i < 1024 * Integer.parseInt(args[3]); i++) {
-                        docs = index(docs);
+                        docs = docsToIndex(docs);
                     }
                     updateRequest = new UpdateRequest();
                     updateRequest.add(docs);
 
-                    System.out.println("index: " + updateRequest);
-                    index_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
+                    System.out.println("docsToIndex: " + updateRequest);
+                    int retries = 0;
+                    NamedList resp = null;
+                    try {
+                        retries++ ;
+                        resp = index(updateRequest, source_col, source_cli);
+                    }
+                    catch (Exception e) {
+                        Thread.sleep(4000);
+                        if (retries == 10) {
+                            throw new AssertionError("Indexing doesn't happen to source_col: " + source_col);
+                        }
+                        else {
+                            retries++;
+                            resp = index(updateRequest, source_col, source_cli);
+                        }
+                    }
+                    index_hist.update(getQTime((resp)));
                     updateRequest.commit(source_cli, source_col);
 
                     docs.clear();
@@ -240,8 +256,23 @@ public class UltimateCdcrTesterV2 {
                 // update payload to verify on other cluster
                 payload = "id:" + updateRequest.getDeleteById().get(0);
             }
-
-            dbi_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
+            int retries = 0;
+            NamedList resp = null;
+            try {
+                retries++ ;
+                resp = source_cli.request(updateRequest, source_col);
+            }
+            catch (Exception e) {
+                Thread.sleep(4000);
+                if (retries == 10) {
+                    throw new AssertionError("DeleteById doesn't happen to source_col: " + source_col);
+                }
+                else {
+                    retries++;
+                    resp = source_cli.request(updateRequest, source_col);
+                }
+            }
+            dbi_hist.update(getQTime((resp)));
             updateRequest.commit(source_cli, source_col);
 
             waitForSync(source_cli, source_col, target_cli, target_col, payload);
@@ -260,14 +291,35 @@ public class UltimateCdcrTesterV2 {
         String fieldValue1 = strings[r.nextInt(5) % 5];
         String payload1 = fieldName1 + ":" + fieldValue1;
         updateRequest.deleteByQuery(payload1);
-        dbq_hist.update(getQTime((NamedList) source_cli.request(updateRequest, source_col)));
+        int retries = 0;
+        NamedList resp = null;
+        try {
+            retries++ ;
+            resp = source_cli.request(updateRequest, source_col);
+        }
+        catch (Exception e) {
+            Thread.sleep(4000);
+            if (retries == 10) {
+                throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
+            }
+            else {
+                retries++;
+                resp = source_cli.request(updateRequest, source_col);
+            }
+        }
+        dbq_hist.update(getQTime((resp)));
         updateRequest.commit(source_cli, source_col);
 
         waitForSync(source_cli, source_col, target_cli, target_col, payload1);
     }
 
+    private static NamedList index(UpdateRequest updateRequest, String source_col, CloudSolrClient source_cli)
+            throws Exception{
+        return source_cli.request(updateRequest, source_col);
+    }
+
     // add-update
-    private static List<SolrInputDocument> index(List<SolrInputDocument> docs) {
+    private static List<SolrInputDocument> docsToIndex(List<SolrInputDocument> docs) {
         SolrInputDocument document = new SolrInputDocument();
         String id = UUID.randomUUID().toString();
         document.addField("member_id_i", r.nextInt(5) % 5);
@@ -291,7 +343,7 @@ public class UltimateCdcrTesterV2 {
         return docs;
     }
 
-    // create sentences for data to index
+    // create sentences for data to docsToIndex
     private static String createSentance(int numWords) {
         //Sentence with numWords and 3-7 letters in each word
         StringBuilder sb = new StringBuilder(numWords * 2);
@@ -301,9 +353,9 @@ public class UltimateCdcrTesterV2 {
         return sb.toString();
     }
 
-    // create data for index
+    // create data for docsToIndex
     private static void loadData() {
-        // to index payload
+        // to docsToIndex payload
         for (int i = 0; i < 5; i++) {
             strings[i] = createSentance(1);
         }
@@ -365,7 +417,7 @@ public class UltimateCdcrTesterV2 {
     private static void takeSnapshots() throws Exception {
         writeToFile(dbi_hist.getSnapshot(), "delete-by-id");
         writeToFile(dbq_hist.getSnapshot(), "delete-by-query");
-        writeToFile(index_hist.getSnapshot(), "index");
+        writeToFile(index_hist.getSnapshot(), "docsToIndex");
     }
 
     // helper function to validate sync
