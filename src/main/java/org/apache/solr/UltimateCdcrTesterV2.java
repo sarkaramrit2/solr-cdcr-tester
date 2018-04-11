@@ -48,6 +48,8 @@ public class UltimateCdcrTesterV2 {
     private static final String COMMA = ",";
     private static final String WORKING_DIR = System.getProperty("user.dir");
 
+    private static final int RETRIES = 100;
+
     public static void main(String args[]) throws IOException, SolrServerException, Exception {
 
         if (args.length == 0) {
@@ -104,20 +106,9 @@ public class UltimateCdcrTesterV2 {
                 updateRequest.add(docsAsList);
 
                 System.out.println("docsToIndex: " + updateRequest.getDocumentsMap());
-                int retries = 0;
-                NamedList resp = null;
-                try {
-                    retries++;
-                    resp = index(updateRequest, source_col, source_cli, 0);
-                } catch (SolrException e) {
-                    Thread.sleep(4000);
-                    if (retries == 10) {
-                        throw new AssertionError("Indexing doesn't happen to source_col: " + source_col);
-                    } else {
-                        retries++;
-                        resp = index(updateRequest, source_col, source_cli, 0);
-                    }
-                }
+
+                NamedList resp = index(updateRequest, source_col, source_cli, 0);
+
                 index_hist.update(getQTime((resp)));
                 updateRequest.commit(source_cli, source_col);
                 waitForSync(source_cli, source_col, target_cli, target_col, ALL);
@@ -268,7 +259,7 @@ public class UltimateCdcrTesterV2 {
                 resp = source_cli.request(updateRequest, source_col);
             } catch (Exception e) {
                 Thread.sleep(4000);
-                if (retries == 10) {
+                if (retries == RETRIES) {
                     throw new AssertionError("DeleteById doesn't happen to source_col: " + source_col);
                 } else {
                     retries++;
@@ -300,7 +291,7 @@ public class UltimateCdcrTesterV2 {
             resp = source_cli.request(updateRequest, source_col);
         } catch (Exception e) {
             Thread.sleep(4000);
-            if (retries == 10) {
+            if (retries == RETRIES) {
                 throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
             } else {
                 retries++;
@@ -320,7 +311,7 @@ public class UltimateCdcrTesterV2 {
             resp = source_cli.request(updateRequest, source_col);
         } catch (Exception e) {
             Thread.sleep(4000);
-            if (retries == 10) {
+            if (retries == RETRIES) {
                 throw new AssertionError("DeleteByQuery doesn't happen to source_col: " + source_col);
             } else {
                 retries++;
