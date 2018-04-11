@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9c85e72-1301-4900-8a81-87075b5a0f82" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/solr-cdcr-tester.iws" afterPath="$PROJECT_DIR$/solr-cdcr-tester.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java" afterPath="$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -181,8 +182,8 @@
       <file leaf-file-name="UltimateCdcrTesterV2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="485" column="13" lean-forward="true" selection-start-line="485" selection-start-column="13" selection-end-line="485" selection-end-column="13" />
+            <state relative-caret-position="311">
+              <caret line="527" column="5" lean-forward="true" selection-start-line="527" selection-start-column="5" selection-end-line="527" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -984,8 +985,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/apache/solr/UltimateCdcrTesterV2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="485" column="13" lean-forward="true" selection-start-line="485" selection-start-column="13" selection-end-line="485" selection-end-column="13" />
+        <state relative-caret-position="311">
+          <caret line="527" column="5" lean-forward="true" selection-start-line="527" selection-start-column="5" selection-end-line="527" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

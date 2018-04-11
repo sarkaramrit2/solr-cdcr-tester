@@ -531,7 +531,7 @@ public class UltimateCdcrTesterV2 {
     private static void takeSnapshots() throws Exception {
         writeToFile(dbi_hist.getSnapshot(), "delete-by-id");
         writeToFile(dbq_hist.getSnapshot(), "delete-by-query");
-        writeToFile(index_hist.getSnapshot(), "docsToIndex");
+        writeToFile(index_hist.getSnapshot(), "index");
     }
 
     // helper function to validate sync
